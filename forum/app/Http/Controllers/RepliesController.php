@@ -40,11 +40,11 @@ class RepliesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Thread $thread)
+    public function store($channel, Thread $thread)
     {
         $thread->addReplay([
             "body"=> request('body'),
-            "user_id"=>auth()->id(),
+            "user_id"=>auth()->id()
         ]);
         return back();
     }

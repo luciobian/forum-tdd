@@ -17,6 +17,16 @@ class ThreadTest extends TestCase
 
         $this->thread = create("App\Thread");
     }
+    /** @test */
+    function aThreadCanMakeAStringPath()
+    {
+        $this->assertEquals(
+            "/threads/{$this->thread->channel->slug}/{$this->thread->id}", 
+            $this->thread->path()
+        );
+    }
+
+
 
     /** @test */
     function aThreadHasReplies()
@@ -38,5 +48,13 @@ class ThreadTest extends TestCase
             "user_id"=>1
         ]);
         $this->assertCount(1,$this->thread->replies);
+    }
+
+    /** @test */
+    function aThreadHasAChannel()
+    {
+        $thread = create("App\Thread");
+
+        $this->assertInstanceOf("App\Channel", $thread->channel);
     }
 }
