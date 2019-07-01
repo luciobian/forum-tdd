@@ -42,6 +42,9 @@ class RepliesController extends Controller
      */
     public function store($channel, Thread $thread)
     {
+        $this->validate(request(), [
+            'body'=>'required'
+        ]);
         $thread->addReplay([
             "body"=> request('body'),
             "user_id"=>auth()->id()
