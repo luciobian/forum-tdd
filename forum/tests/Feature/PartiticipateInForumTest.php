@@ -22,7 +22,7 @@ class PartiticipateInForumTest extends TestCase
     /** @test */
     function anAuthenticatedUserMayParticipateInForumThreads()
     {
-        $this->singIn();
+        $this->signIn();
 
         $thread = create("App\Thread");
 
@@ -37,7 +37,7 @@ class PartiticipateInForumTest extends TestCase
     /** @test */
     function aReplyRequiresABody()
     {
-        $this->withExceptionHandling()->singIn();
+        $this->withExceptionHandling()->signIn();
 
         $reply = make("App\Reply", ['body'=>null]);
         $thread = create("App\Thread");

@@ -21,10 +21,18 @@ class ThreadsController extends Controller
     public function index(Channel $channel)
     {
         if($channel->exists){
-            $threads = $channel->threads()->latest()->get();    
+            $threads = $channel->threads()->latest();    
         }else{
-            $threads = Thread::latest()->get();
+            $threads = Thread::latest();
         }
+
+        if($username = request('by')){
+            $user = \App\User::whereName($username)->firstOrFail();
+
+            $threads = $threads->whereId($user->id);
+        }
+
+        $threads = $threads->get();
         return view('threads.index', ['threads'=>$threads]);
     }
 

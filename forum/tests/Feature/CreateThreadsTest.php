@@ -24,7 +24,7 @@ class CreateThreadsTest extends TestCase
     /** @test */
     function anAuthenticatedUserCanCreateNewForumThreads()
     {
-        $this->singIn();
+        $this->signIn();
 
         // raw crea un arreglo del factory
         // make crea una instacia pero no guarda en db
@@ -68,7 +68,7 @@ class CreateThreadsTest extends TestCase
 
     public function publishThread($overrides = [])
     {
-        $this->withExceptionHandling()->singIn();
+        $this->withExceptionHandling()->signIn();
 
         $thread = make("App\Thread", $overrides);
 

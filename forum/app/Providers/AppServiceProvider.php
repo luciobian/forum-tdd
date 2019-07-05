@@ -25,5 +25,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        
+        // En todas las vistas se pasa el parametro channels
+        \View::composer('*', function($view){
+            $view->with('channels', \App\Channel::all());
+        });
     }
 }
