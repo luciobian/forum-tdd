@@ -17,10 +17,12 @@
                 <div class="card-header">
                     <div class="level">
                         <div class="flex">
-                            <a href=""> 
+                            <a href="{{route('profile',$thread->creator)}}">
                                 {{$thread->creator->name}}
                             </a> posted:
-                            {{$thread->title}}
+                            <a href="{{ $thread->path() }}">
+                                {{$thread->title}}
+                            </a>
                         </div>
                         <span>
                             {{$thread->created_at->diffForHumans()}}
