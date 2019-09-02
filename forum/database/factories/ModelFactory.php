@@ -58,3 +58,14 @@ $factory->define(App\Channel::class, function($faker){
         'slug'=>$name
     ];
 });
+
+$factory->define(App\Activity::class, function (Faker $faker) {
+    return [
+        'type' => $faker->randomElement(['created_thread', 'created_reply']),
+        'user_id' => $faker->randomDigit,
+        'subject_id' =>  function(){
+            return factory('App\Thread')->create()->id;
+        },
+        'subject_type' => $faker->randomElement(['App\Reply', 'App\Thread']),
+    ];
+});

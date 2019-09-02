@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -21,14 +22,12 @@ class ProfilesTest extends TestCase
     /** @test */
     function profilesDisplayAllThreadsCreatedByTheAssociatedUser()
     {
+        $this->signIn();
 
-        $user = create("App\User");
-
-        $threads = create("App\Thread", ['user_id'=>$user->id]);
+        $threads = create("App\Thread", ['user_id'=>auth()->id()]);
         
-        $this->get("/profiles/{$user->name}")
+        $this->get("/profiles/". auth()->user()->name)
             ->assertSee($threads->tittle)
             ->assertSee($threads->body);
-
     }
 }
