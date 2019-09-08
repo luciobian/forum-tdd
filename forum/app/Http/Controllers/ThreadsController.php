@@ -7,9 +7,17 @@ use App\Channel;
 use Illuminate\Http\Request;
 use App\Filters\ThreadFilters;
 
+
+/**
+ * ThreadsController
+ * 
+ * Realiza operaciones de publicaciones.
+ */
 class ThreadsController extends Controller
 {
-
+    /**
+     * Constructor
+     */
     public function __construct(){
         $this->middleware('auth')->except(['index', 'show']);
     } 

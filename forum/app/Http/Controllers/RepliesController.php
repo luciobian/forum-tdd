@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Thread;
 use Illuminate\Http\Request;
 
+/**
+ * RepliesController
+ * 
+ * Realiza operaciones sobre las respuestas de las publicaciones.
+ */
 class RepliesController extends Controller
 {
 

@@ -3,11 +3,15 @@
 namespace App;
 
 /**
- *
+ * Trait RecordsActivity.
  */
 trait RecordsActivity
 {
-    
+    /**
+     * Determina el tipo de actividad para crearla.
+     *
+     * @return void
+     */
     protected static function bootRecordsActivity()
     {
 
@@ -25,11 +29,22 @@ trait RecordsActivity
 
     }
 
+    /**
+     * Determina el tipo de actividad.
+     *
+     * @return void
+     */
     protected static function getActivitiesToRecord()
     {
         return ['created'];
     }
     
+    /**
+     * Crea una nueva actividad de usuario.
+     *
+     * @param [type] $event
+     * @return void
+     */
     protected function recordActivity($event)
     {
         $this->activity()->create([
@@ -38,11 +53,22 @@ trait RecordsActivity
         ]);
     }
 
+    /**
+     * Relación polimórfica.
+     *
+     * @return void
+     */
     protected function activity()
     {
         return $this->morphMany('App\Activity', 'subject');
     }
 
+    /**
+     * Obtiene el tipo de actividad.
+     *
+     * @param [type] $event
+     * @return string
+     */
     protected function getActivityType($event)
     {
         $type = strtolower((new \ReflectionClass($this))->getShortName());

@@ -4,6 +4,10 @@ namespace App\Filters;
 
 use App\User;
 
+
+/**
+ * Threads Filter
+ */
 class ThreadFilters extends Filters
 {
     protected $filters = ['by', 'popular'];

@@ -32,6 +32,11 @@ abstract class Filters
         return $this->builder;
     }
 
+    /**
+     * Obtiene las filtros del request.
+     *
+     * @return void
+     */
     protected function getFilters()
     {
         return $this->request->only($this->filters);
