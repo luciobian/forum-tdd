@@ -17,7 +17,9 @@
                 {{$date}}
             </div>
                 @foreach ($activity as $item)
-                    @include("profiles.activities.{$item->type}", ['activity' => $item])
+                  @if (view()->exists("profiles.activities.{$item->type}"))
+                    @include("profiles.activities.{$item->type}", ['activity' => $item]) 
+                  @endif
                 @endforeach
             @endforeach
 
