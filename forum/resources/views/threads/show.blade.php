@@ -42,7 +42,7 @@
             <div class="form-group">
                 <textarea name="body" class="form-control" id="body" placeholder="Have something to say?"></textarea>
             </div>
-            <button class="btn btn-primary" type="submit">Post</button>
+            <button class="btn btn-primary mb-3" type="submit">Post</button>
         </form>
         @else
         <p class="text-center">Please <a href="{{ route('login') }}"> sign in</a> to participate in this discussion.</p>
