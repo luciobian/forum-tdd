@@ -37921,7 +37921,7 @@ var render = function() {
     },
     [
       _c("span", {
-        staticClass: "glyphicon glyphicon-heart",
+        staticClass: "fa fa-heart",
         attrs: { "aria-hidden": "true" }
       }),
       _vm._v(" "),
