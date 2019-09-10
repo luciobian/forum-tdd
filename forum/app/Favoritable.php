@@ -22,7 +22,7 @@ trait Favoritable
     }
 
     /**
-     * Verifica que pueda poner en favorito solo una vez.
+     * Pone en favorito a un comentario.
      *
      * @return void
      */
@@ -35,13 +35,34 @@ trait Favoritable
     }
 
     /**
-     * Determina que un usuario no hay puesto favorito.
+     * Quita el favorito a un comentario.
+     *
+     * @return void
+     */
+    public function unfavorite()
+    {
+        $atributte = ['user_id'=>auth()->id()];
+        $this->favorites()->where($atributte)->delete();
+    }
+
+    /**
+     * Determina que un usuario haya o no puesto favorito.
      *
      * @return boolean
      */
     public function isFavorited()
     {
         return !! $this->favorites->where('user_id', auth()->id())->count();
+    }
+
+    /**
+     * Retorna como atributo el método isFavorited().
+     *
+     * @return boolean
+     */
+    public function getIsFavoritedAttribute()
+    {
+        return $this->isFavorited();
     }
 
     /**

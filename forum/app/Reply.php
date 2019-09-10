@@ -8,7 +8,6 @@ use App\Favoritable;
 use App\RecordsActivity;
 use Illuminate\Database\Eloquent\Model;
 
-
 /**
  * Modelo Reply
  * 
@@ -22,6 +21,9 @@ class Reply extends Model
     protected $guarded = [];
 
     protected $with = ['owner', 'favorites'];
+
+    protected $appends = ['favoritesCount', 'isFavorited'];
+    
 
     /**
      * Relación con el modelo usuario.
