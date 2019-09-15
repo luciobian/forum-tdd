@@ -11,6 +11,22 @@ use Illuminate\Database\Eloquent\Model;
  */
 trait Favoritable
 {
+
+
+    /**
+     * Elimina los favoritos cuando un elemento modelo relacionado
+     * se elimina
+     *
+     * @return void
+     */
+    protected static function bootFavoritable()
+    {
+        static::deleting(function ($model){
+            $model->favorites->each->delete();
+        });
+    }
+
+
     /**
      * Relación polimórfica.
      *
@@ -42,7 +58,7 @@ trait Favoritable
     public function unfavorite()
     {
         $atributte = ['user_id'=>auth()->id()];
-        $this->favorites()->where($atributte)->delete();
+        $this->favorites()->where($atributte)->get()->each->delete();    
     }
 
     /**
