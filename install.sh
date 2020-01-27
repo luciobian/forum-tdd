@@ -32,6 +32,10 @@ if [ ${#var} -eq 0 ]; then
 
 	echo ""
 	echo "Tablas migradas..."
+
+	echo ""
+	php artisan db:fill
+	echo "Tablas cargadas con datos aleatoreos..."
 fi
 
 echo " "
